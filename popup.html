@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>API Sentinel V2</title>
+
+    <link rel="stylesheet" href="popup.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <header>
+
+        <div>
+
+            <h1>🛡 API Sentinel</h1>
+
+            <p>
+                API Regression Monitor V2
+            </p>
+
+        </div>
+
+        <span id="statusBadge"
+              class="badge ready">
+            READY
+        </span>
+
+    </header>
+
+
+    <div class="actions">
+
+        <button id="startBtn"
+                class="primary">
+            ▶ Start Regression
+        </button>
+
+        <button id="stopBtn"
+                class="danger"
+                disabled>
+            ■ Stop Regression
+        </button>
+
+    </div>
+
+
+    <div class="dashboard">
+
+        <div class="stat-card">
+
+            <span>APIs</span>
+
+            <strong id="apiCount">
+                0
+            </strong>
+
+        </div>
+
+        <div class="stat-card failure">
+
+            <span>Failures</span>
+
+            <strong id="failureCount">
+                0
+            </strong>
+
+        </div>
+
+        <div class="stat-card warning">
+
+            <span>Slow</span>
+
+            <strong id="slowCount">
+                0
+            </strong>
+
+        </div>
+
+    </div>
+
+
+    <section>
+
+        <div class="section-header">
+
+            <h2>
+                Regression Runs
+            </h2>
+
+            <button id="refreshBtn"
+                    class="icon-btn">
+                ↻
+            </button>
+
+        </div>
+
+        <div id="runsContainer">
+
+        </div>
+
+    </section>
+
+
+    <div class="comparison-actions">
+
+        <button id="compareBtn"
+                class="primary"
+                disabled>
+            🔍 Compare Selected
+        </button>
+
+        <button id="clearBtn"
+                class="secondary">
+            🗑 Clear All
+        </button>
+
+    </div>
+
+
+    <div id="reportActions"
+         class="report-actions hidden">
+
+        <button id="excelBtn"
+                class="excel">
+            📊 Export Excel
+        </button>
+
+        <button id="pdfBtn"
+                class="pdf">
+            📄 Save PDF
+        </button>
+
+    </div>
+
+
+    <section id="comparisonSection"
+         class="comparison hidden">
+
+        <h2>
+            Regression Comparison
+        </h2>
+
+        <div id="runInfo"
+             class="run-info">
+        </div>
+
+
+        <div id="summaryCards"
+             class="summary-grid">
+        </div>
+
+
+        <div class="filters">
+
+            <input
+                id="searchInput"
+                type="text"
+                placeholder="🔍 Search API..."
+            >
+
+            <select id="filterSelect">
+
+                <option value="ALL">
+                    All
+                </option>
+
+                <option value="NEW_FAILURE">
+                    New Failures
+                </option>
+
+                <option value="DATA_CHANGE">
+                    Data Changes
+                </option>
+
+                <option value="PERFORMANCE">
+                    Performance Issues
+                </option>
+
+                <option value="NEW_API">
+                    New APIs
+                </option>
+
+                <option value="MISSING_API">
+                    Missing APIs
+                </option>
+
+                <option value="SAME">
+                    Same Behavior
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div id="resultsContainer">
+
+        </div>
+
+    </section>
+
+
+    <section id="detailSection"
+             class="detail hidden">
+
+        <div class="section-header">
+
+            <h2>
+                API Details
+            </h2>
+
+            <button id="closeDetailBtn"
+                    class="icon-btn">
+                ✕
+            </button>
+
+        </div>
+
+        <div id="detailContainer">
+        </div>
+
+    </section>
+
+</div>
+
+
+<script src="core/json-diff.js"></script>
+<script src="core/performance.js"></script>
+<script src="core/comparator.js"></script>
+<script src="core/sanitizer.js"></script>
+
+<script src="reports/excel.js"></script>
+<script src="reports/pdf.js"></script>
+
+<script src="popup.js"></script>
+
+</body>
+
+</html>
